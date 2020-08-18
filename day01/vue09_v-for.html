@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 
+단순 출력 : {{}}, v-text, v-html
+속성 입력 : v-bind : 속성 = "속성값"  :::: 여러 개 속성 바인딩
+양방향 바인딩 : v-model
+
+v-for
+v-if
+v-show
+ -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id='app'>
+
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                show: false
+            }
+        })
+    </script>
+</body>
+
+</html>

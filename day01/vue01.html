@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <title>Page Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+    <!-- MVVM -->
+    <!-- 1. 화면 부분 :: View에 해당 -->
+    <div id='app'>
+        <!-- mustache(콧수염) expression  -->
+        <h2>{{title}}</h2>
+        <strong>{{num}}</strong>
+    </div>
+
+    <script>
+        // 2. 데이터 : Model
+        var model = {
+                title: 'Encore',
+                num: 2
+            }
+            // 3. 뷰 부분 : VueModel
+        var app = new Vue({
+            // el : 어떤 화면 영역에 적용시킬지 지정
+            el: '#app',
+            // data : 화면에서 출력할 정보 지정
+            data: model
+        })
+    </script>
+</body>
+
+</html>

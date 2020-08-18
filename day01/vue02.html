@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <title>Page Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+
+<body>
+    <div id='app'>
+        <!-- mustache expression -->
+        <div>{{title}}</div>
+        <!-- 디렉티브 -->
+        <div v-text='title'></div>
+        <!-- v-html : html 태그 해석 후 -->
+        <div v-html='title'></div>
+    </div>
+    <!-- 
+        script 위치
+        HTML 구조를 DOM 구조로 메모리에 올려놓고 el로 지정해야 하는데
+        상단에 존재하면 지정이 되지 않는다
+     -->
+    <script>
+        var model = {
+            title: '<h2>Encore</h2>'
+        }
+        var app = new Vue({
+            el: '#app',
+            data: model
+        })
+    </script>
+</body>
+
+</html>
