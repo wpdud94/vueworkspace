@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id='app'>
+        <!-- computed를 사용하면 {{sum}} 이렇게 속성처럼 접근해야 한다 -->
+        <input type="text" v-model='num'><br> 1부터 입력된 수까지의 합계 : <span>{{sum}}</span>
+    </div>
+
+    <script>
+        var model = {
+
+        }
+        var app = new Vue({
+            el: '#app',
+            data: {
+                num: 0
+            },
+            computed: {
+                sum: function() {
+                    var total = 0;
+                    var n = Number(this.num);
+                    if (Number.isNaN(n) || n < 0) return 0;
+                    for (i = 1; i <= n; i++) {
+                        total += i;
+                    }
+                    return total;
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>
+
+</html>

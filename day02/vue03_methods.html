@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>methods</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div v-html="title"></div>
+        <div v-text='title'></div>
+        <div>{{title}}</div>
+        <div>{{showHrm()}}</div>
+        <!--Encore HRM 시간-->
+        <div>{{showMyName('James')}}</div>
+        <button @click='changeMyName'>버튼</button>
+    </div>
+    <script>
+        var model = {
+
+        }
+        var app = new Vue({
+            el: '#app',
+            data: {
+                title: '<h2>Encore</h2>'
+            },
+            methods: {
+                showHrm: function() {
+                    return "Encore HRM " + new Date();
+                },
+                // event 객체와 다른 인자값을 구분하기 위해 반드시 $를 붙여야 한다
+                showMyName: function(name, event) {
+                    return name + " , " + new Date();
+                },
+                changeMyName: function() {
+                    this.title = 'Encore HRM Encore HRM';
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

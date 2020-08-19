@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-for, v-if</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<!-- 
+    JavaScript에서는 == 연산자와 === 연산자가 존재한다
+    1) ==
+    타입 상관없이 값만 비교한다
+    2) ===
+    값과 타입을 비교한다
+ -->
+
+<body>
+    <h2>v-for와 v-if 함께 사용하기</h2>
+    <div id='app'>
+        <!-- 개설된 반수에 해당하는 지역만 나오게 -->
+        <label for="">encore 특정지역 개설된 반수 : </label>
+        <input type="number" v-model.number='num'>
+        <ul>
+            <li v-for="(e, index) in encore" v-if="num===e.count">
+                지역 : {{e.name}}, {{e.count}}개 반
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                encore: [{
+                    name: '영등포구',
+                    count: 3
+                }, {
+                    name: '남부지구',
+                    count: 5
+                }, {
+                    name: '서초지구',
+                    count: 7
+                }],
+                num: 0
+            }
+        })
+    </script>
+</body>
+
+</html>
