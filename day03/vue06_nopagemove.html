@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>페이지 이동 시... submit... action 안 넘어가도록</h2>
+        <a href="vue05_onclick_event.html" @click='sendMsg1'>페이지 이동 막기</a><br>
+        <a href="vue05_onclick_event.html" @click='sendMsg2'>페이지 이동 막기</a><br>
+        <a href="vue05_onclick_event.html" @click.prevent='sendMsg1'>페이지 이동 막기</a><br>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        methods: {
+            sendMsg1() {
+                alert('이동 막기1');
+            },
+            sendMsg2(event) {
+                event.preventDefault();
+                alert('이동 막기2');
+            }
+        }
+    })
+</script>
+
+</html>

@@ -1,0 +1,116 @@
+<!--  Enav You-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>SSAFY</title>
+    <style>
+        body {
+            background-color: #ffffff;
+        }
+        
+        #second>h2 {
+            margin: auto;
+            padding: 0px;
+            text-align: center;
+            color: blue;
+        }
+        
+        .red {
+            color: red;
+        }
+        
+        #signup-form {
+            width: 70%;
+            height: 200px;
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+            font-family: serif;
+            font-size: 14px;
+        }
+        
+        #signup-form2 {
+            width: 70%;
+            height: 200px;
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+            font-family: serif;
+            font-size: 14px;
+            color: red;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+    <!-- 
+    1. 서버 안 넘어가도록 막기
+    2. 엔터키하면 form2에 결과 뿌리기
+    3. 아이디, 비밀번호가 입력이 되지 않으면 alert를 띄우기 : methods
+   -->
+    <div id="second">
+        <h2 v-html="title"></h2>
+    </div>
+
+    <section id="signup_section">
+        <div id="signup-form">
+            <h2>Sign Up Form</h2>
+            <form id="frm" action="main.do" method="post" @submit.prevent="dataCheck">
+                아이디<input type="text" id='id' v-model='id' placeholder="아이디 입력"> <br> 비밀번호
+                <input type="text" id='pass' v-model='pass' placeholder="비밀번호 입력"> <br>이름
+                <input type="text" v-model='name'> <br>주소
+                <input type="text" v-model='addr'> <br>전화번호
+                <input type="text" v-model='tel'><br>
+                <button type="submit">사원추가</button>
+                <input @keyup.enter="submit"> 키엔터
+            </form>
+        </div>
+
+        <div id=" signup-form2 ">
+            <fieldset>
+                <span v-html="info.id "></span>
+                <span v-html="info.pass "></span>
+                <span v-html="info.name "></span>
+                <span v-html="info.addr "></span>
+                <span v-html="info.tel "></span>
+            </fieldset>
+        </div>
+    </section>
+
+
+    <script type="text/javascript ">
+        var info = {
+            id: '',
+            pass: '',
+            name: '',
+            addr: '',
+            tel: '',
+        }
+        var signup_section = new Vue({
+            el: '#signup_section',
+            data: info,
+            methods: {
+                dataCheck() {
+                    if (this.id == " ") {
+                        alert(document.getElementById('id').getAttribute("placeholder "));
+                    }
+                    if (this.pass == " ") {
+                        alert(document.getElementById('pass').getAttribute("placeholder "));
+                    }
+                }
+            }
+        });
+
+        var second = new Vue({
+            el: '#second',
+            data: {
+                title: 'Encore Info'
+            }
+        });
+    </script>
+</body>
+
+</html>

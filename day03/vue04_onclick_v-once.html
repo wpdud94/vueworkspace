@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 
+            v-once
+            ::
+            해당 element를 단 한 번만 랜더링한다
+            정적인 element로 처리할 때 사용한다
+         -->
+        <h2 v-once>{{'초기값 :'+count}}</h2>
+        <h2>{{'현재값 : '+count}}</h2>
+        <button @click="count++">+</button>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            count: 1
+        }
+    })
+</script>
+
+</html>

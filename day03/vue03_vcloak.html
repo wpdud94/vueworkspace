@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 자바스크립트가 (settimeout) 완전히 실행되기 전가지 display:none으로 지정-->
+        <h2 v-cloak>{{title}}</h2>
+    </div>
+</body>
+<script>
+    setTimeout(() => {
+        new Vue({
+            el: '#app',
+            data: {
+                title: '안녕하세요'
+            }
+        }); //Vue
+    }, 2000); //특정 시간 지연
+</script>
+
+</html>

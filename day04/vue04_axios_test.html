@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #ffffff;
+        }
+        
+        #second h2 {
+            margin: auto;
+            text-align: center;
+            color: blue;
+        }
+        
+        #tid {
+            margin: auto;
+            text-align: center;
+        }
+        
+        #tid td,
+        #tid th {
+            border: 1px solid;
+            border-color: green;
+            margin: auto;
+            text-align: center;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<div id="second">
+    <h2>National Flags</h2>
+</div>
+<div id="app">
+    <section v-if='errored'>
+        <h2>Axios error occured</h2>
+    </section>
+    <section v-else>
+        <div v-if='loading'>Loading...</div>
+        <table id='tid'>
+            <thead>
+                <tr>
+                    <th>코드</th>
+                    <th>이름</th>
+                    <th>이미지</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for='f in flags'>
+                    <td>{{f.code}}</td>
+                    <td>{{f.name}}</td>
+                    <td>
+                        <img :src="f.flag" alt="" width="200" height="200">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                flags: null,
+                errored: false,
+                loading: true
+            }
+        },
+        mounted() {
+            axios
+                .get('../util/flags.json')
+                .then(response => this.flags = response.data.nationalflags)
+                .catch(errored => {
+                    this.errored = true
+                })
+                .finally(() => this.loading = false)
+        }
+    })
+</script>
+
+<body>
+
+</body>
+
+</html>

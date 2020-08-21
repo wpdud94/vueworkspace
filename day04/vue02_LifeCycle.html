@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 
+# Vue Life Cycle주요 Function
+- Vue 인스턴스가 생성될 때, 중요한 단계들을 거친다
+- 이를 Life Cycle 이라고 한다
+- 기본적으로 Before  해당 함수 형식
+- Vue에서는 함수 호출을 hook 이라고 한다
+(1) created
+- 해당 함수 호출/훅으로 Vue 인스턴스 생성시킴
+- el, data, methods, filters 등 속성들이 활성화된다
+(2) mounted
+- 해당 함수 호출/훅으로 HTML DOM에 랜더링 | mount | 부착 과정 진행
+- 반응형으로 받아온 data를 el에 지정된 화면단으로 랜더링
+(3) updated 
+- 랜더링한 DOM data의 값을 변경할 때마다 계속 호출
+- 만약에 변경된 값들을 DOM을 이용해서 접근하려 한다면, updated에서 해야 한다
+(3) destroyed
+- Vue 인스턴트가 메모리에서 사라짐    
+ -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+    <div id='app'>
+        <span>클릭 카운트 : {{count}}</span>
+        <button @click='count++'>Click</button>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            count: 0
+        },
+        beforeCreate: function() {
+            console.log('beforecreated : ' + this.count);
+        },
+        created: function() {
+            console.log('created : ' + this.count);
+            console.log('created 연결된 DOM elements : ' + this.$el);
+        },
+        beforeMount: function() {
+            console.log('beforemounted : ' + this.count);
+            console.log('beforemounted 연결된 DOM elements, el : ' + this.$el);
+        },
+        mounted: function() {
+            console.log('mounted : ' + this.count);
+            console.log('mounted 연결된  DOM elements, el : ' + this.$el);
+        },
+        beforeUpdated: function() {
+            console.log('beforeUpdated : ' + this.count);
+        },
+        updated: function() {
+            console.log('updated : ' + this.count);
+        }
+    })
+</script>
+
+</html>
